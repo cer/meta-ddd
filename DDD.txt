@@ -37,6 +37,16 @@ package "Solution Space" {
   }
 
   class BoundedContextRelationship
+  class BoundedContextRelationshipParticipant
+
+  class ContextMapPattern
+  class OpenHostService
+  class Conformist
+  class AntiCorruptionLayer
+  class Supplier
+  class Customer
+  class SharedKernel
+
 
   class ContextMap
 }
@@ -46,7 +56,18 @@ BoundedContext *-- DomainModel : has
 
 ContextMap *-- "+" BoundedContextRelationship
 
-BoundedContextRelationship o-- BoundedContext : from
-BoundedContextRelationship o-- BoundedContext : to
+BoundedContextRelationship o-- BoundedContextRelationshipParticipant : upstream
+BoundedContextRelationship o-- BoundedContextRelationshipParticipant : downstream
+
+BoundedContextRelationshipParticipant o-- BoundedContext
+BoundedContextRelationshipParticipant o-- "0,1" ContextMapPattern
+
+ContextMapPattern <|-- OpenHostService
+ContextMapPattern <|-- Conformist
+ContextMapPattern <|-- AntiCorruptionLayer
+ContextMapPattern <|-- Supplier
+ContextMapPattern <|-- Customer
+ContextMapPattern <|-- SharedKernel
+
 
 @enduml
