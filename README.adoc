@@ -1,0 +1,13 @@
+= A domain model of DDD
+
+The purpose of this domain model is to name DDD concepts and the relationships between the concepts.
+
+== Big picture
+
+image::./event-storming.png[]
+
+== Description
+
+The purpose of each element is as follows:
+
+* TODO

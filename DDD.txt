@@ -1,0 +1,52 @@
+@startuml
+
+hide empty members
+skinparam handwritten true
+
+package "Problem Space" {
+
+  class DomainVision {
+    text
+  }
+
+  class Domain
+
+  class Subdomain {
+    name
+  }
+
+  class CoreDomain
+  class SupportingSubdomain
+  class GenericDomain
+}
+
+Domain *-- "+" Subdomain : partitioned into
+
+Subdomain <|-- CoreDomain
+Subdomain <|-- SupportingSubdomain
+Subdomain <|-- GenericDomain
+
+package "Solution Space" {
+
+  class BoundedContext {
+    name
+  }
+
+  class DomainModel {
+
+  }
+
+  class BoundedContextRelationship
+
+  class ContextMap
+}
+
+Subdomain "1" o-- "+" BoundedContext : contains
+BoundedContext *-- DomainModel : has
+
+ContextMap *-- "+" BoundedContextRelationship
+
+BoundedContextRelationship o-- BoundedContext : from
+BoundedContextRelationship o-- BoundedContext : to
+
+@enduml
