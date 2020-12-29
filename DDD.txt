@@ -26,15 +26,19 @@ Subdomain <|-- CoreDomain
 Subdomain <|-- SupportingSubdomain
 Subdomain <|-- GenericDomain
 
+class UbiquitousLanguage
+
+
 package "Solution Space" {
 
   class BoundedContext {
     name
   }
 
-  class DomainModel {
+  class DomainModel
 
-  }
+  class Class
+  class Operation
 
   class BoundedContextRelationship
   class BoundedContextRelationshipParticipant
@@ -54,6 +58,9 @@ package "Solution Space" {
 Subdomain "1" o-- "+" BoundedContext : contains
 BoundedContext *-- DomainModel : has
 
+DomainModel *-- Class
+Class *-- Operation
+
 ContextMap *-- "+" BoundedContextRelationship
 
 BoundedContextRelationship o-- BoundedContextRelationshipParticipant : upstream
@@ -69,5 +76,8 @@ ContextMapPattern <|-- Supplier
 ContextMapPattern <|-- Customer
 ContextMapPattern <|-- SharedKernel
 
+UbiquitousLanguage --> BoundedContext : namesOf
+UbiquitousLanguage --> Class : namesOf
+UbiquitousLanguage --> Operation : namesOf
 
 @enduml
