@@ -4,7 +4,7 @@ The purpose of this domain model is to name DDD concepts and the relationships b
 
 == Big picture
 
-image::./event-storming.png[]
+image::./DDD.png[]
 
 == Description
 
